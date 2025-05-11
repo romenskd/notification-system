@@ -3,6 +3,8 @@
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/notification-dispatcher" />
+    <file type="web" url="file://$PROJECT_DIR$/notification-gateway" />
+    <file type="web" url="file://$PROJECT_DIR$/status-tracker" />
   </component>
   <component name="ProjectRootManager" version="2" project-jdk-name="21" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />

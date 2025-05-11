@@ -4,7 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/notification-dispatcher.main.iml" filepath="$PROJECT_DIR$/.idea/modules/notification-dispatcher.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/notification-dispatcher.test.iml" filepath="$PROJECT_DIR$/.idea/modules/notification-dispatcher.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/notification-gateway.main.iml" filepath="$PROJECT_DIR$/.idea/modules/notification-gateway.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/notification-system.iml" filepath="$PROJECT_DIR$/.idea/notification-system.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/status-tracker.main.iml" filepath="$PROJECT_DIR$/.idea/modules/status-tracker.main.iml" />
     </modules>
   </component>
 </project>
