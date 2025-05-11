@@ -1,0 +1,88 @@
+services:
+  notification-dispatcher:
+    image: notification-dispatcher:latest
+    build:
+      context: ./notification-dispatcher
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db-dispatcher:5432/db_dispatcher
+      SPRING_DATASOURCE_USERNAME: user
+      SPRING_DATASOURCE_PASSWORD: pass
+      SPRING_DATASOURCE_DRIVER_CLASS_NAME: org.postgresql.Driver
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_DATASOURCE_INITIALIZATION_MODE: always
+    depends_on:
+      db-dispatcher:
+        condition: service_healthy
+    networks:
+      - app-network
+
+  db-dispatcher:
+    image: postgres:13
+    restart: always
+    environment:
+      POSTGRES_DB: db_dispatcher
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U user -d db_dispatcher"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+  db-gateway:
+    image: postgres:13
+    restart: always
+    environment:
+      POSTGRES_DB: db_gateway
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U user -d db_gateway" ]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    ports:
+      - "5433:5432"
+    volumes:
+      - gateway_data:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+  db-tracker:
+    image: postgres:13
+    restart: always
+    environment:
+      POSTGRES_DB: db_tracker
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U user -d db_tracker" ]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    ports:
+      - "5434:5432"
+    volumes:
+      - tracker_data:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+
+volumes:
+  postgres_data:
+  gateway_data:
+  tracker_data:
+
+networks:
+  app-network:
+    driver: bridge

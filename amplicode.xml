@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AmplicodePersistenceUnitSettings">
+    <persistence-units>
+      <persistence-unit moduleName="notification-dispatcher.main" name="Default">
+        <packages>
+          <package value="com.github.romenskd.notificationdispatcher" />
+        </packages>
+      </persistence-unit>
+      <persistence-unit moduleName="notification-gateway.main" name="Default">
+        <packages>
+          <package value="com.github.romenskd.notificationgateway" />
+        </packages>
+      </persistence-unit>
+      <persistence-unit moduleName="status-tracker.main" name="Default">
+        <packages>
+          <package value="com.github.romenskd.statustracker" />
+        </packages>
+      </persistence-unit>
+    </persistence-units>
+  </component>
+</project>
